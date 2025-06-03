@@ -1,19 +1,41 @@
+#include "Coin.hpp"
+
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <vector>
+
 
 int returnFunction(int input);
 void fizzBuzz(int input);
 
 int main(int argc, char* argv[])
 {
-
+  FindCoin fc;
   std::cout << returnFunction(-10) << "\n";
   std::cout << returnFunction(0) << "\n";
   std::cout << returnFunction(10) << "\n";
 
   fizzBuzz(3);
-  fizzBuzz(5);
+  fizzBuzz(15);
+
+  std::vector<Coin> coins;
+  for (size_t i = 1; i <= 12; i++)
+  {
+    coins.push_back({"M" + std::to_string(i), 10});
+  }
+
+  int fakeIndex = 6;
+  bool isHeavy = false;
+  coins[fakeIndex].weight = isHeavy ? 11 : 9;
+
+  std::vector<Coin*> coin_ptr;
+  for (size_t i = 0; i < coins.size(); i++)
+  {
+    coin_ptr.push_back(&coins[i]);
+  }
+  
+  fc.find_fake_coin(coin_ptr);
 
   return 0;
 }
